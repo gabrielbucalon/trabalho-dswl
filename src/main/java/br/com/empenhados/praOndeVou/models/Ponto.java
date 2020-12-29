@@ -1,6 +1,15 @@
 package br.com.empenhados.praOndeVou.models;
 
-public class Pontos {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Ponto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String cep;
     private int numero;
@@ -11,7 +20,7 @@ public class Pontos {
     private double lontitude;
     private long usuario_id;
 
-    public Pontos(){ }
+    public Ponto(){ }
 
     public long getId() {
         return id;

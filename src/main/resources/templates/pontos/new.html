@@ -16,7 +16,6 @@
             if(String(zipCode).length === LENGTH_ZIP_CODE){
                 fetch(`http://viacep.com.br/ws/${zipCode}/json/`).then((body) => body.json())
                     .then((data) => {
-                        console.log(data);
                         document.getElementById("bairro").value = data.bairro;
                         document.getElementById("estado").value = data.localidade;
                         document.getElementById("nomeLocalidade").value = data.logradouro;

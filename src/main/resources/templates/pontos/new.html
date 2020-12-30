@@ -27,9 +27,7 @@
         }
 
         const formIsValid = () => {
-            if (fieldsIsNotEmpty()){
-                console.log("Opa");
-            }
+            fieldsIsNotEmpty() ? $("#submitForm").prop('disabled', false) : $("#submitForm").prop('disabled', true);
         }
 
         const fieldsIsNotEmpty = () => document.getElementById("bairro").value !== "" &&
@@ -50,7 +48,7 @@
         <input placeholder="Estado" onblur="formIsValid()" id="estado" type="text">
         <input placeholder="Nome da localidade" onblur="formIsValid()" id="nomeLocalidade" type="text">
 
-        <button disabled type="button">Cadastrar</button>
+        <button disabled id="submitForm" type="submit">Cadastrar</button>
     </form>
 </body>
 </html>

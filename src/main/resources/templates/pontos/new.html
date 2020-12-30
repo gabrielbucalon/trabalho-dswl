@@ -12,16 +12,21 @@
         const LENGTH_ZIP_CODE = 8;
 
         const getAddress = () => {
-            let zipCode = document.getElementById("zipCode").value;
 
-            zipCode = String(zipCode).replace("-");
+            let zipCode = document.getElementById("zipCode").value;
+            zipCode = String(zipCode).replace(/[^0-9]/g,'');
+            document.getElementById("zipCode").value = zipCode;
 
             if(String(zipCode).length === LENGTH_ZIP_CODE){
                 fetch(`http://viacep.com.br/ws/${zipCode}/json/`).then((body) => body.json())
                     .then((data) => {
-                        document.getElementById("bairro").value = data.bairro;
-                        document.getElementById("estado").value = data.localidade;
-                        document.getElementById("nomeLocalidade").value = data.logradouro;
+                        if (data.erro){
+                            return;
+                        }else{
+                            document.getElementById("bairro").value = data.bairro;
+                            document.getElementById("estado").value = data.localidade;
+                            document.getElementById("nomeLocalidade").value = data.logradouro;
+                        }
                     });
             }
         }
@@ -42,7 +47,7 @@
 
     <form action="/pontos" method="post">
 
-        <input placeholder="CEP" onblur="formIsValid()" onkeyup="getAddress()" id="zipCode" type="text">
+        <input placeholder="CEP" maxlength="10" onblur="formIsValid()" onkeyup="getAddress()" id="zipCode" type="text">
         <input placeholder="Número" onblur="formIsValid()" id="numero" type="text">
         <input placeholder="Bairro" onblur="formIsValid()" id="bairro" type="text">
         <input placeholder="Estado" onblur="formIsValid()" id="estado" type="text">

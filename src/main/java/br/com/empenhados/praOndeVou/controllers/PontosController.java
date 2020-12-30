@@ -21,7 +21,7 @@ public class PontosController {
     // Método responsavel para criar um novo ponto
     @GetMapping("/pontos")
     public String create(Ponto ponto){
-
+        System.out.println(ponto);
 //        pontoRepository.save(ponto);
 
         return "redirect:/";

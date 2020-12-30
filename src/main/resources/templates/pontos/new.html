@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Pra onde vou</title>
+
+    <script>
+
+        const LENGTH_ZIP_CODE = 8;
+
+        const getAddress = () => {
+            let zipCode = document.getElementById("zipCode").value;
+
+            zipCode = String(zipCode).replace("-");
+
+            if(String(zipCode).length === LENGTH_ZIP_CODE){
+                fetch(`http://viacep.com.br/ws/${zipCode}/json/`).then((body) => body.json())
+                    .then((data) => {
+                        console.log(data);
+                        document.getElementById("bairro").value = data.bairro;
+                        document.getElementById("estado").value = data.localidade;
+                        document.getElementById("nomeLocalidade").value = data.logradouro;
+                    });
+            }
+        }
+    </script>
 </head>
 <body>
     <form action="/pontos" method="post">
-        <input placeholder="CEP" type="text">
-        <input placeholder="Número" type="text">
-        <input placeholder="Bairro" type="text">
-        <input placeholder="Estado" type="text">
-        <input placeholder="Nome da localidade" type="text">
-        <input placeholder="Longetidade" type="text">
 
-        <button type="submit">Cadastrar</button>
+        <input placeholder="CEP" onkeyup="getAddress()" id="zipCode" type="text">
+        <input placeholder="Número" id="numero" type="text">
+        <input placeholder="Bairro" id="bairro" type="text">
+        <input placeholder="Estado" id="estado" type="text">
+        <input placeholder="Nome da localidade" id="nomeLocalidade" type="text">
+
+        <button type="button">Cadastrar</button>
     </form>
 </body>
 </html>

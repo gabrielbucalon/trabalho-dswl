@@ -1,9 +1,6 @@
 package br.com.empenhados.praOndeVou.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Ponto {
@@ -16,18 +13,22 @@ public class Ponto {
     private String bairro;
     private String estado;
     private String nomeLocalidade;
-    private double latitudade;
-    private double lontitude;
+    private double latitude;
+    private double longitude;
     private long usuario_id;
 
     public Ponto(){ }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public Ponto(String cep, int numero, String bairro, String estado,
+                 String nomeLocalidade, double latitudade, double lontitude, long usuario_id) {
+        this.cep = cep;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.estado = estado;
+        this.nomeLocalidade = nomeLocalidade;
+        this.latitude = latitudade;
+        this.longitude = lontitude;
+        this.usuario_id = usuario_id;
     }
 
     public String getCep() {
@@ -70,20 +71,20 @@ public class Ponto {
         this.nomeLocalidade = nomeLocalidade;
     }
 
-    public double getLatitudade() {
-        return latitudade;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setLatitudade(double latitudade) {
-        this.latitudade = latitudade;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
-    public double getLontitude() {
-        return lontitude;
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setLontitude(double lontitude) {
-        this.lontitude = lontitude;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public long getUsuario_id() {
@@ -103,8 +104,8 @@ public class Ponto {
                 ", bairro='" + bairro + '\'' +
                 ", estado='" + estado + '\'' +
                 ", nomeLocalidade='" + nomeLocalidade + '\'' +
-                ", latitudade=" + latitudade +
-                ", lontitude=" + lontitude +
+                ", latitudade=" + latitude +
+                ", lontitude=" + longitude +
                 ", usuario_id=" + usuario_id +
                 '}';
     }

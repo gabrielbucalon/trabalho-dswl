@@ -1,5 +1,9 @@
 package br.com.empenhados.praOndeVou.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +23,13 @@ public class Ponto {
 
     public Ponto(){ }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     public Ponto(String cep, int numero, String bairro, String estado,
                  String nomeLocalidade, double latitudade, double lontitude, long usuario_id) {
         this.cep = cep;
@@ -93,14 +104,6 @@ public class Ponto {
 
     public void setUsuario_id(long usuario_id) {
         this.usuario_id = usuario_id;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     @Override

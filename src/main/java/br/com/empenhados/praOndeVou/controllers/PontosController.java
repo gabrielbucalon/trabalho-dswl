@@ -5,6 +5,9 @@ import br.com.empenhados.praOndeVou.repositories.PontoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class PontosController {
@@ -30,6 +33,14 @@ public class PontosController {
         pontoRepository.save(ponto);
 
         return "redirect:/pontos/new";
+    }
+
+    @GetMapping("/busca")
+    public ModelAndView index() {
+        List<Ponto> listaPonto = this.pontoRepository.findAll();
+        ModelAndView mv = new ModelAndView("registros/index");
+        mv.addObject("listaPonto", listaPonto);
+        return mv;
     }
 
 

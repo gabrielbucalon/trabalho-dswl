@@ -1,40 +1,13 @@
-package br.com.empenhados.praOndeVou.models;
+package br.com.empenhados.praOndeVou.dto;
 
-import org.springframework.lang.NonNull;
+import br.com.empenhados.praOndeVou.models.Usuario;
 
-import javax.persistence.*;
-
-@Entity
-public class Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(nullable = false)
+public class RequisicaoUsuario
+{
     private String nome;
-    @Column(nullable = false)
     private int idade;
-    @Column(nullable = false)
     private String email;
-    @Column(nullable = false)
     private String senha;
-
-    public Usuario() {
-    }
-
-    public Usuario(String nome, int idade, String email) {
-        this.nome = nome;
-        this.idade = idade;
-        this.email = email;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -68,11 +41,27 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public Usuario toUsuario(){
+        Usuario usuario = new Usuario();
+        usuario.setNome(this.nome);
+        usuario.setIdade(this.idade);
+        usuario.setEmail(this.email);
+        usuario.setSenha(this.senha);
+
+        return usuario;
+    }
+
+    public void fromUsuario(Usuario usuario){
+        this.nome = usuario.getNome();
+        this.idade = usuario.getIdade();
+        this.email = usuario.getEmail();;
+        this.senha = usuario.getSenha();
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
+        return "RequisicaoUsuario{" +
+                "nome='" + nome + '\'' +
                 ", idade=" + idade +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +

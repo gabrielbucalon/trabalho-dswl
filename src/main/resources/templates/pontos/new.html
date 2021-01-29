@@ -91,32 +91,34 @@
             <label for="zipCode" class="form-label">CEP</label>
             <input class="form-control" placeholder="CEP" name="cep" maxlength="10" onblur="formIsValid()" onkeyup="getAddress()" id="zipCode" type="text">
         </div>
-
-
-
         <div class="mb-3">
-            <label for="zipCode" class="form-label">CEP</label>
+            <label for="numero" class="form-label">Numero</label>
             <input class="form-control" placeholder="Número" name="numero" onblur="formIsValid()" id="numero" type="text">
         </div>
 
         <div class="mb-3">
-            <label for="zipCode" class="form-label">CEP</label>
+            <label for="bairro" class="form-label">Bairro</label>
             <input class="form-control" placeholder="Bairro" name="bairro" onblur="formIsValid()" id="bairro" type="text">
         </div>
 
         <div class="mb-3">
-            <label for="zipCode" class="form-label">CEP</label>
+            <label for="estado" class="form-label">Estado</label>
             <input class="form-control" placeholder="Estado" name="estado" onblur="formIsValid()" id="estado" type="text">
         </div>
 
         <div class="mb-3">
-            <label for="zipCode" class="form-label">CEP</label>
+            <label for="nomeLocalidade" class="form-label">Localidade</label>
             <input class="form-control" name="nomeLocalidade" onblur="formIsValid()" id="nomeLocalidade" type="text">
         </div>
+        <div>
 
-        <button class="btn btn-primary" disabled id="submitForm" onclick="getLongAndLat()" type="submit">Cadastrar um ponto</button>
+            <button class="btn btn-primary" disabled id="submitForm" onclick="getLongAndLat()" type="submit"  style="margin-right: 3px; width: 170px">Cadastrar um ponto</button>
+            <a href="http://localhost:9090/home"><button class="btn btn-primary" type="button" style="margin-right: 3px; width: 170px">Voltar Home</button></a>
+
+        </div>
+
+
     </form>
-
 
     <main onload="initMap">
         <section class="content">

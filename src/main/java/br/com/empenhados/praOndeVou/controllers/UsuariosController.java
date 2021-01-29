@@ -34,7 +34,7 @@ public class UsuariosController {
         return "pontos/novo";
     }
 
-    // Criar um novo ponto
+    // Criar um novo usuario
     @PostMapping("/pontos/novo")
     public String create(RequisicaoUsuario requisicaoUsuario){
         Usuario usuario = requisicaoUsuario.toUsuario();

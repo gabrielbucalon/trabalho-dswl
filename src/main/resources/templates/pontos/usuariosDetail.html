@@ -24,6 +24,8 @@
         <form th:object="${usuario}" th:action="@{/pontos/{usuarioId}/usuariosDetail(usuarioId = ${usuario.getId()})}" method="POST">
             <button class="btn btn-primary" type="submit">Deletar</button>
         </form>
+        <a href="http://localhost:9090/home"><button class="btn btn-primary" type="button">Voltar Home</button></a>
+
     </main>
 
 </body>

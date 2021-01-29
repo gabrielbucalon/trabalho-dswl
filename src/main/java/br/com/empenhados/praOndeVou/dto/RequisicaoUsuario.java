@@ -1,5 +1,6 @@
 package br.com.empenhados.praOndeVou.dto;
 
+import br.com.empenhados.praOndeVou.models.Ponto;
 import br.com.empenhados.praOndeVou.models.Usuario;
 
 public class RequisicaoUsuario

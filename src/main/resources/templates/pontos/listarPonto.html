@@ -1,0 +1,60 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista de Pontos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1>Lista de Pontos</h1>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-houver">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">CEP</th>
+                        <th scope="col">NUMERO</th>
+                        <th scope="col">BAIRRO</th>
+                        <th scope="col">ESTADO</th>
+                        <th scope="col">LOCALIDADE</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <tr th:each="pontos : ${listaPonto}">
+                    <td class="col-1" scope="row" th:text="${pontos.getId()}"></td>
+                    <td class="col-1" scope="row" th:text="${pontos.getCep()}"></td>
+                    <td class="col-1" scope="row" th:text="${pontos.getNumero()}"></td>
+                    <td class="col-1" scope="row" th:text="${pontos.getBairro()}"></td>
+                    <td class="col-1" scope="row" th:text="${pontos.getEstado()}"></td>
+                    <td class="col-1" scope="row" th:text="${pontos.getNomeLocalidade()}"></td>
+                    <td class="col-1" scope="row"><a th:href="@{pontos/{pontoId}/pontosUpdate(pontoId = ${pontos.getId()})}">Editar</a></td>
+                    <form method="post" th:action="@{/pontos/{pontoId}/delete(pontoId = ${pontos.getId()})}">
+                        <td class="col-1" scope="row"><button type="submit"> Deletar</button></td>
+                    </form>
+                </tr>
+            </tbody>
+            </table>
+            <a href="http://localhost:9090/home"><button class="btn btn-primary" type="button">Voltar Home</button></a>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
